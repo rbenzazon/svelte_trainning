@@ -27,12 +27,18 @@
 		{url:"http://www.google.com",label:"google"},
 		{url:"http://www.amazon.fr",label:"amazon"}
 	]
+
+	import Inner from './Inner.svelte';
+
+	function handleInnerMessage(event){
+		alert(event.detail.text);
+	}
 </script>
 
 <main>
 	<nav>
 		<ul>
-			{#each navLinks as {url,label}
+			{#each navLinks as {url,label}}
 			<li><a href={url}>{label}</a></li>
 			{/each}
 		</ul>
@@ -53,6 +59,8 @@
 		Log in
 	</button>
 	{/if}
+
+	<Inner on:message={handleInnerMessage}/>
 </main>
 
 <style>
